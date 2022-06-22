@@ -10,15 +10,15 @@
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <link rel="stylesheet" type="text/css" href="css/leftSection.css"/>
     <link rel="stylesheet" type="text/css" href="css/middleSection.css"/>
+    <link rel="stylesheet" type="text/css" href="css/rightSection.css"/>
     
-    <script type="text/javascript" src="dist/bundle.js"></script>
     <script src="scripts/main.js"></script>
+    <script src="scripts/rightSide.js"></script>     
     <script src="scripts/fileTransfer.js"></script>
     <script src="scripts/leftSide.js"></script>     
   </head>
 
   <body onload="generateContentList()">
-    <script type="text/javascript" src="./dist/bundle.js"></script>
     <canvas id="myCanvas" style="position:absolute; z-index:-1"></canvas>
     <div id="base">
       <div id="leftDiv">
@@ -31,9 +31,20 @@
 
         </div>
         <video hidden controls id="myVideo" width="500"><source id="mySource"></video>
-        <video hidden controls id="myVideo2" width="500"><source id="mySource2"></video>
       </div>
-      <div id="rightDiv"></div>
+      <div id="rightDiv">
+        <canvas id="episodePreview"></canvas>
+        <div id="animeMainDetails">
+          <span id="animeName"></span>
+          <br />
+          <span id="animeEpisode"></span>
+        </div>
+
+        <div id="animeDetailsTag">
+          <span class="animeDetailsLabel">Duration: </span>
+          <span class="animeDetailsValue" id="animeDurationDetails"></span>
+        </div>
+      </div>
     </div>
 
     

@@ -2,7 +2,7 @@ var fs = require('fs');
 var read = require( 'utils-fs-read-properties' );
 const fsPromises = fs.promises;
 var path = require('path');
-var absolutePath = path.resolve('E:/Downloads/Animes');
+var absolutePath = path.resolve('E:/Downloads/Animes/');
 var directories;
 var episodes;
 var stats =[];
@@ -20,6 +20,8 @@ async function readEpisodes(path){
    
   return episodes;
 }
+
+
 
 /*
 async function readContents(path){

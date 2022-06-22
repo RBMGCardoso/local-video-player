@@ -1,0 +1,48 @@
+#episodePreview{
+    display: block;
+    width: 500px;
+    height: 281.25px;
+
+    margin: 50px auto 10px auto;
+
+    background-color: #000;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+#animeMainDetails{
+    margin: 10px auto 10px auto;
+    padding-left: 20px;
+    width:500px;
+}
+
+#animeName
+{
+    display: inline-block;
+    font: bolder 30px helvetica;
+    color: #ddd;
+    margin-bottom: 10px;
+}
+
+#animeEpisode
+{
+    font: bolder 25px helvetica;
+    color: #ddd;
+}
+
+#animeDetailsTag
+{
+    width: 100%;
+    height: 114px;
+
+    margin-top: 50px;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    padding: 30px 0px 0px 102px;
+
+    background-color: #1a1a1a;
+    box-shadow: 0px 0px 7px 1px #000000;
+
+    font: bolder 20px helvetica;
+    color: #ddd;
+}

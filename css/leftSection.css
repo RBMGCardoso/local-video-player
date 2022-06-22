@@ -11,12 +11,14 @@
 #listItems{
     overflow: auto;
     height: calc(100% - 9.6%);
+    box-shadow: 6px 12px 23px -1px #000000;
 }
 
 .animeList:hover{
     background: linear-gradient(0deg, rgba(105, 0, 0,0) 80%, rgba(0,0,0,0.31) 100%), rgb(105, 0, 0);
     transition: 0.1s;
     z-index: -2;
+    cursor: pointer;
 }
 
 .animeList{
@@ -32,4 +34,9 @@
 .animeListContent
 {
     height: 9.02%;
+    display: inline-block;
+    vertical-align: middle;
+
+    font: bolder 19px helvetica;
+    color: #ddd;
 }

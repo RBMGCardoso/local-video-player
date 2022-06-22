@@ -2,7 +2,6 @@
     background-color: #272727;
     height: /*max(9.6%, 47.97px)*/ 9.6%;
     border-bottom: 2px solid #8b8b8b;
-    z-index: 1;
 }
 
 #myCanvas
@@ -13,6 +12,7 @@
 #episodeList{
     overflow: auto;
     height: calc(100% - 9.6%);
+    user-select: none;
 }
 
 .episode{
@@ -20,5 +20,30 @@
     height: 59px;
     padding: 10px 20px 10px 20px;
     background-color: rgba(150,150,150,0.5);
-    border-bottom: 1.5px solid #fff;
+    border-bottom: 2px solid #ddd;
+}
+
+.episode:hover{
+    background-color: rgba(100,100,100,0.6);
+    cursor: pointer;
+}
+
+#episodeSpanName, .episodeSpanDuration
+{
+    font: bolder 19px helvetica;
+    
+    color: #ddd;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    line-height: 59px;
+}
+
+.episodeSpanDuration{
+    font: bolder 15px helvetica;
+    line-height: 59px;
+}
+
+.episodeText{
+    width: 100%;
+    display: inline-block;
+    vertical-align: middle;
 }

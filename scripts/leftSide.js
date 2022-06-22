@@ -13,9 +13,11 @@ function generateContentList()
     readDirectory().then(function(result){
         for (let i = 0; i < result.length; i++) {
            document.getElementById('listItems').innerHTML +=     `<div class="animeList" onclick="generateEpisodes('`+absPath+result[i]+`');">
-                                                                    <div class="animeListContent">`+reduceText(result[i], 70)+`</div>
-                                                                </div> `;
+                                                                    <span class="animeListContent">`+reduceText(result[i], 70)+`</span>
+                                                                </div>`;
         }
+        document.getElementById('listItems').firstChild.click();
+
     });
 }
 
@@ -24,16 +26,16 @@ function generateContentList()
 function generateEpisodes(path)
 {
     document.getElementById('episodeList').innerHTML = "";  
-    readEpisodes(path).then(function(result){
-        getPath(path + '/' + result[Math.floor(Math.random() * result.length)]);      
-        getThumbnail();
-
+    readEpisodes(path).then(function(result){ 
+        getDuration(path + '/' + result[Math.floor(Math.random() * result.length)], null, 'myCanvas')        
+        getAnimeDetails(path, result[0],0);
         for (let i = 0; i < result.length; i++){ 
-            var durTemp = getDuration(path+'/'+result[i], i);
-            console.log(durTemp);
-            document.getElementById('episodeList').innerHTML += `<div class="episode" onclick="getPath('`+path+'/'+result[i]+`')">            
-                                                                    <span style="float:left">`+result[i]+`</span>
-                                                                    <span id="episodeSpan`+i+`" style="float: right"></span>
+            var durTemp = getDuration(path+'/'+result[i], i, 'episodeSpanDuration');
+            document.getElementById('episodeList').innerHTML += `<div class="episode" onclick="getAnimeDetails('`+path+`','`+result[i]+`',`+i+`)">    
+                                                                    <div class="episodeText">        
+                                                                        <span id="episodeSpanName" style="float:left">`+result[i].substring(0, result[i].lastIndexOf('.'))+`</span>
+                                                                        <span class="episodeSpanDuration" id="episodeSpanDuration`+i+`" style="float: right"></span>
+                                                                    </div>
                                                                 </div>`
         }
     });
@@ -48,15 +50,7 @@ function reduceText(txt, size){
     return text;
 }
 
-//  
-function getPath(path){
-    var video = document.getElementById("myVideo");
-    var source = document.getElementById("mySource");
-    source.src = path+"#t=300,300";
-    video.load();   
-}
-
-function getDuration(path, i)
+function getDuration(path, i, canvasId)
 {
     var video2 = document.createElement('video');
     video2.src = path;
@@ -67,27 +61,37 @@ function getDuration(path, i)
         var mins = Math.floor(duration);
         var secs = Math.floor((duration%1)*60);
 
+        if(mins < 10) mins = "0" + mins;
         if(secs < 10) secs = "0" + secs;
 
-        document.getElementById('episodeSpan'+i).innerHTML = mins+":"+secs;
+        if(i != null)
+        {
+            document.getElementById(canvasId+i).innerHTML = mins+":"+secs;
+        }
+        else if(canvasId != null)
+        {
+            getThumbnail(path, canvasId, video2.duration*0.25);
+        }
+
     }
+    video2.remove();
 }
 
-function getThumbnail(){
-    m1 = performance.now();
-    let canvas = document.getElementById('myCanvas');
-    let video = document.getElementById('myVideo');
+function getThumbnail(path, canvasId, duration){
+    let canvas = document.getElementById(canvasId);
+    var video = document.createElement("video");
+    video.src = path+"#t=300,300";
+    video.load();   
 
+    
     video.addEventListener('seeked', function(){
-        canvas.width = 1920;
-        canvas.height = 1080;
-
         let ctx = canvas.getContext('2d');
+            ctx.canvas.width = 1920;
+            ctx.canvas.height = 1080;
             ctx.clearRect(0,0,ctx.canvas.width, ctx.canvas.height)
             ctx.drawImage(video, 0, 0, ctx.canvas.width, ctx.canvas.height);
         });
 
-
-    video.currentTime = 300;
-    m2 = performance.now();
+    console.log(duration);
+    video.currentTime = duration;
 }
