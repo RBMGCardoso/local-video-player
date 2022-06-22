@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="My Player"/>
+
+    <title>My Player</title>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="css/leftSection.css"/>
+    <link rel="stylesheet" type="text/css" href="css/middleSection.css"/>
+    
+    <script type="text/javascript" src="dist/bundle.js"></script>
+    <script src="scripts/main.js"></script>
+    <script src="scripts/fileTransfer.js"></script>
+    <script src="scripts/leftSide.js"></script>     
+  </head>
+
+  <body onload="generateContentList()">
+    <script type="text/javascript" src="./dist/bundle.js"></script>
+    <canvas id="myCanvas" style="position:absolute; z-index:-1"></canvas>
+    <div id="base">
+      <div id="leftDiv">
+        <div id="logo"></div>
+        <div id="listItems"></div>
+      </div>
+      <div id="middleDiv">
+        <div id="topBar"></div>
+        <div id="episodeList">
+
+        </div>
+        <video hidden controls id="myVideo" width="500"><source id="mySource"></video>
+        <video hidden controls id="myVideo2" width="500"><source id="mySource2"></video>
+      </div>
+      <div id="rightDiv"></div>
+    </div>
+
+    
+    
+  </body>
+</html>

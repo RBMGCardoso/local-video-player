@@ -1,0 +1,35 @@
+#logo{
+    background-color: #272727;
+    height: /*max(9.6%, 47.97px)*/ 9.6%;
+    border-bottom: 2px solid #8b8b8b;
+}
+
+#listItems::-webkit-scrollbar {
+    display: none;
+  }
+
+#listItems{
+    overflow: auto;
+    height: calc(100% - 9.6%);
+}
+
+.animeList:hover{
+    background: linear-gradient(0deg, rgba(105, 0, 0,0) 80%, rgba(0,0,0,0.31) 100%), rgb(105, 0, 0);
+    transition: 0.1s;
+    z-index: -2;
+}
+
+.animeList{
+    background: linear-gradient(0deg, rgba(105, 0, 0,0) 80%, rgba(0,0,0,0.31) 100%), #272727;
+    height: /*max(9.02%, 43.38px);*/ 60px;
+    word-wrap: break-word;
+    transition: 0.4s;
+    z-index: -2;
+    padding: 10px 20px 10px 20px;
+    user-select: none;
+}
+
+.animeListContent
+{
+    height: 9.02%;
+}
